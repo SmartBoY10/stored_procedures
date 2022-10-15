@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Update page</title>
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  
+  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css" />
+</head>
+
+<body>
+    <form action="{% url 'update' %}" method="post">
+        {% csrf_token %}
+        <div class="col col_13 checkout">
+            <br>
+            <h5><strong>Change user</strong></h5>
+            
+            <input type="text" name="id" hidden="True" value="{{ user.id }}">
+            <div class="mb-3">
+                <label class="form-label" for="id_name">User:</label>
+                <input type="text" name="name" value="{{ user }}" class="form-control"id="name">
+            </div>
+            
+            <p>
+                <a href="{% url 'delete_page' user.id %}">
+                    <button class="btn btn-danger btn-sm me-md-2" type="button">Delete</button>
+                </a>
+                <button class="btn btn-primary btn-sm me-md-2" type="submit">Save</button>
+            </p>
+
+        </div>
+    </form>
+</body>

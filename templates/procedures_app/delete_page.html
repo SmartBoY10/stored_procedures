@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Delete page</title>
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  
+  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css" />
+</head>
+
+<body>
+    <br>
+    <h3>Are you sure you want to delete the Пользователь "{{ user }}"?</h3>
+
+    <form <form action="{% url 'delete' %}" method="post">
+        {% csrf_token %}
+        <div>
+            <br>
+            <input type="text" name="id" hidden="True" value="{{ user.id }}">
+            <button class="btn btn-danger btn-sm me-md-2" type="submit">Yes, I’m sure</button>
+            <a href="{% url 'home' %}">
+                <button class="btn btn-secondary btn-sm me-md-2" type="button">No, take me back</button>
+            </a>
+        </div>
+    </form>
+</body>

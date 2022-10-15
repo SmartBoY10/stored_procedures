@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Index page</title>
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  
+  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css" />
+</head>
+
+<body>
+
+    <br>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <a href="{% url 'create_page' %}">
+            <button class="btn btn-primary btn-sm me-md-2" type="button">Add user</button>
+        </a>
+    </div>
+
+    
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Some params</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <th scope="row">{{ user.id }}</th>
+                <td>
+                    <a href="{% url 'update_page' user.id %}">
+                        {{ user.name}}
+                    </a>
+                </td>
+                <td></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
